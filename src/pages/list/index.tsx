@@ -10,25 +10,7 @@ async function mockRequest() {
     return [];
   }
   count++;
-  return [
-    'A',
-    'B',
-    'C',
-    'D',
-    'E',
-    'F',
-    'G',
-    'H',
-    'I',
-    'J',
-    'K',
-    'L',
-    'M',
-    'N',
-    'O',
-    'P',
-    'Q',
-  ];
+  return ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q'];
 }
 
 export default () => {
@@ -36,7 +18,7 @@ export default () => {
   const [hasMore, setHasMore] = useState(true);
   async function loadMore() {
     const append = await mockRequest();
-    setData(val => [...val, ...append]);
+    setData((val) => [...val, ...append]);
     setHasMore(append.length > 0);
   }
 
@@ -44,10 +26,12 @@ export default () => {
     <>
       <List>
         {data.map((item, index) => (
-          <List.Item key={index} onClick={() => history.goBack()}>{item}</List.Item>
+          <List.Item key={index} onClick={() => history.goBack()}>
+            {item}
+          </List.Item>
         ))}
       </List>
       <InfiniteScroll loadMore={loadMore} hasMore={hasMore} />
     </>
-  )
-}
+  );
+};
