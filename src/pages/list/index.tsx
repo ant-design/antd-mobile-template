@@ -1,7 +1,7 @@
-import { InfiniteScroll, List } from 'antd-mobile';
-import React, { useState } from 'react';
-import { history } from 'umi';
-
+import { Content, Header, Page } from '@alita/flow';
+import { useNavigate } from 'alita';
+import { InfiniteScroll, List, SearchBar } from 'antd-mobile';
+import React, { useEffect, useState } from 'react';
 let count = 0;
 
 async function mockRequest() {
@@ -10,28 +10,55 @@ async function mockRequest() {
     return [];
   }
   count++;
-  return ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q'];
+  return [
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+    'H',
+    'I',
+    'J',
+    'K',
+    'L',
+    'M',
+    'N',
+    'O',
+    'P',
+    'Q',
+  ];
 }
 
 export default () => {
   const [data, setData] = useState<string[]>([]);
+  const [count, setCount] = useState<number>(0);
   const [hasMore, setHasMore] = useState(true);
+  const navigate = useNavigate();
   async function loadMore() {
     const append = await mockRequest();
     setData((val) => [...val, ...append]);
     setHasMore(append.length > 0);
   }
-
+  useEffect(() => {
+    loadMore();
+  }, []);
   return (
-    <>
-      <List>
-        {data.map((item, index) => (
-          <List.Item key={index} onClick={() => history.goBack()}>
-            {item}
-          </List.Item>
-        ))}
-      </List>
-      <InfiniteScroll loadMore={loadMore} hasMore={hasMore} />
-    </>
+    <Page>
+      <Header>
+        <SearchBar placeholder="请输入内容" />
+      </Header>
+      <Content>
+        <List>
+          {data.map((item, index) => (
+            <List.Item key={index} onClick={() => navigate(-1)}>
+              {item}
+            </List.Item>
+          ))}
+        </List>
+        <InfiniteScroll loadMore={loadMore} hasMore={hasMore} />
+      </Content>
+    </Page>
   );
 };
