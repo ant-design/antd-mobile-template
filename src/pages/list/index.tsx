@@ -1,7 +1,8 @@
 import { Content, Header, Page } from '@alita/flow';
 import { useNavigate } from 'alita';
-import { InfiniteScroll, List, SearchBar } from 'antd-mobile';
+import { InfiniteScroll, List } from 'antd-mobile';
 import React, { useEffect, useState } from 'react';
+import SearchBar from '../../components/SearchBar'
 
 let count = 0;
 
