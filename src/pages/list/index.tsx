@@ -1,7 +1,9 @@
 import { Content, Header, Page } from '@alita/flow';
 import { useNavigate } from 'alita';
-import { InfiniteScroll, List, SearchBar } from 'antd-mobile';
+import { InfiniteScroll, List } from 'antd-mobile';
 import React, { useEffect, useState } from 'react';
+import SearchBar from '../../components/SearchBar'
+
 let count = 0;
 
 async function mockRequest() {
@@ -33,7 +35,6 @@ async function mockRequest() {
 
 export default () => {
   const [data, setData] = useState<string[]>([]);
-  const [count, setCount] = useState<number>(0);
   const [hasMore, setHasMore] = useState(true);
   const navigate = useNavigate();
   async function loadMore() {

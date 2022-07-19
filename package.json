@@ -3,22 +3,38 @@
   "scripts": {
     "build": "alita build",
     "format": "prettier -c --write \"**/*\"",
-    "start": "alita dev"
+    "start": "alita dev",
+    "lint": "alita lint",
+    "lint-staged": "lint-staged",
+    "lint:cssinjs": "alita lint --stylelint-only --cssinjs",
+    "lint:es": "alita lint --eslint-only",
+    "lint:es-fix": "alita lint --eslint-only --fix",
+    "lint:style": "alita lint --stylelint-only",
+    "lint:style-fix": "alita lint --stylelint-only --fix",
+    "test": "jest"
   },
   "dependencies": {
     "@alita/flow": "^3.0.0",
-    "alita": "^3.0.1",
+    "alita": "^3.0.8",
     "antd-mobile": "^5.15.1",
-    "prettier": "^2.5.1",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@types/react": "^16.7.18",
-    "@types/react-dom": "^16.0.11",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13",
+    "@types/jest": "^27",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
+    "@types/testing-library__jest-dom": "^5.14.5",
+    "jest": "^27",
     "prettier": "^2",
     "prettier-plugin-organize-imports": "^2",
     "prettier-plugin-packagejson": "^2",
-    "typescript": "^4.7.4"
+    "ts-node": "^10",
+    "typescript": "^4"
+  },
+  "engines": {
+    "node": ">=14.0.0"
   }
 }
