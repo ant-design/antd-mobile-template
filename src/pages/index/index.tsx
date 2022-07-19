@@ -1,6 +1,5 @@
 import { useNavigate } from 'alita';
 import { Button } from 'antd-mobile';
-import React from 'react';
 import styles from './index.css';
 
 export default function ({}) {
